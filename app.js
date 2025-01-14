@@ -12,12 +12,15 @@ import skillRouter from "./routes/skillRouter.js";
 import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
 
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "./" });
 console.log("Environment variables loaded:", process.env); // Debug log
 
 const app = express();
 
-// CORS configuration
+// Debug allowed origins
+console.log("Allowed Origins:", process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL);
+
+// Use CORS middleware
 app.use(
   cors({
     origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
@@ -27,7 +30,7 @@ app.use(
 );
 
 // Handle preflight requests
-app.options("*", cors());
+app.options('*', cors());
 
 app.use(cookieParser());
 app.use(express.json());
@@ -39,6 +42,13 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
+
+// Debugging middleware
+app.use((req, res, next) => {
+  console.log("Request Headers:", req.headers);
+  console.log("Request Body:", req.body);
+  next();
+});
 
 // Routes
 app.use("/api/v1/user", userRouter);
