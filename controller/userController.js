@@ -39,8 +39,6 @@ export const register = catchAsyncErrors(async (req, res, next) => {
   generateToken(user, "Registered!", 201, res);
 });
 
-
-
 // Login User
 export const login = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
@@ -145,8 +143,6 @@ export const getUserForPortfolio = catchAsyncErrors(async (req, res, next) => {
     user,
   });
 });
-
-
 
 // Forgot Password
 export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
