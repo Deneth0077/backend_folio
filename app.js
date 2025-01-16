@@ -17,12 +17,12 @@ dotenv.config({ path: "./.env" });
 const app = express();
 
 // Debug allowed origins
-console.log("Allowed Origins:", "https://portfolio-frontend-v1-main.vercel.app", process.env.DASHBOARD_URL);
+console.log("Allowed Origins:", "https://portfolio-frontend-v1-main.vercel.app", "http://localhost:5174");
 
 // Use CORS middleware
 app.use(
   cors({
-    origin: ["https://portfolio-frontend-v1-main.vercel.app", process.env.DASHBOARD_URL],
+    origin: ["https://portfolio-frontend-v1-main.vercel.app", "http://localhost:5174"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -31,7 +31,7 @@ app.use(
 
 // Handle preflight requests
 app.options('*', cors({
-  origin: ["https://portfolio-frontend-v1-main.vercel.app", process.env.DASHBOARD_URL],
+  origin: ["https://portfolio-frontend-v1-main.vercel.app", "http://localhost:5174"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"], 
