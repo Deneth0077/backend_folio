@@ -13,7 +13,6 @@ import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
 
 dotenv.config({ path: "./.env" });
-console.log("Environment variables loaded:", process.env); // Debug log
 
 const app = express();
 
@@ -26,11 +25,17 @@ app.use(
     origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
 // Handle preflight requests
-app.options('*', cors());
+app.options('*', cors({
+  origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"], 
+}));
 
 app.use(cookieParser());
 app.use(express.json());
