@@ -31,7 +31,7 @@ app.use(
 
 // Handle preflight requests
 app.options('*', cors({
-  origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
+  origin: ["http://localhost:5173", process.env.DASHBOARD_URL],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"], 
