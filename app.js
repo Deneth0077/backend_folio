@@ -31,7 +31,7 @@ app.use(
 
 // Handle preflight requests
 app.options('*', cors({
-  origin: ["http://localhost:5173", process.env.DASHBOARD_URL],
+  origin: ["https://portfolio-frontend-v1-main.vercel.app", process.env.DASHBOARD_URL],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"], 
