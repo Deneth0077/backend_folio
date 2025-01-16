@@ -17,12 +17,12 @@ dotenv.config({ path: "./.env" });
 const app = express();
 
 // Debug allowed origins
-console.log("Allowed Origins:", process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL);
+console.log("Allowed Origins:", "https://portfolio-frontend-v1-main.vercel.app", process.env.DASHBOARD_URL);
 
 // Use CORS middleware
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
+    origin: ["https://portfolio-frontend-v1-main.vercel.app", process.env.DASHBOARD_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
