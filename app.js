@@ -12,7 +12,7 @@ import skillRouter from "./routes/skillRouter.js";
 import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
 
-dotenv.config({ path: "./" });
+dotenv.config({ path: "./.env" });
 console.log("Environment variables loaded:", process.env); // Debug log
 
 const app = express();
